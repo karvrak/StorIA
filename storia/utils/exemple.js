@@ -32,7 +32,7 @@ var objectif;
 */
 const configuration = new Configuration ({
     organization: "org-k0ei4gcG3YuH3f43NRw5Y8Ct",
-    apiKey : "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",
+    apiKey : "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",
 })
 
 const openai = new OpenAIApi(configuration);
