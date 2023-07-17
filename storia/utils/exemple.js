@@ -58,26 +58,6 @@ async function firstPage(){
         ]
     })
 }
-async function helpUser(){
-
-}
-
-async function nextPage(page, text, option1, option2){
-    return await openai.createChatCompletion({
-        model: modelUse,
-        messages : [
-            {role: "user", content:`Tu es un auteur de de roman de science fiction. Tu t'appraite a écrire une histoire.
-            Lhistoire ce déroule a lisbonne. Les personnages principaux sont un groupe daminommé ${personnage}  ${objectif}. 
-            Le ton de l'histoire doit être ${ton} . 
-            Commence l'histoire en introduisant le lieux et les personnages. À la fin de cette première page, 
-            propose deux options différentes pour la prochaine page de l'histoire`},
-            {role:"assistant", content: `${text}\n ${option1}\n${option2}`
-            },
-            {role:"user",content: `je choisi l'option ${page}`}
-            
-        ]
-    })
-}
 async function imagePrompt(story){
 
     return await openai.createChatCompletion({
@@ -88,6 +68,8 @@ async function imagePrompt(story){
         ]
     })
 }
+
+
 async function downloadImage(url, filename) {
     const response = await axios({
         method: 'GET',

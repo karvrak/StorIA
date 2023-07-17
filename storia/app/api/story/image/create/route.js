@@ -14,17 +14,19 @@ const conexion = (apiKey) =>{
 }
 
 const buildImageDesc = async (story) => {
+    var prompt =`en utilisant le texte suivant , ecrit un prompt de 10 a 15 mot qui liste les point important de l'histoire pour généré une image :
+    "${story?story:' a red car'}" .`;
     console.log(`---------------------CREATE IMAGE DESC---------------------\n`)
-    console.log(`en utilisant le texte suivant , ecrit un prompt de 10 a 15 mot qui liste les point important de l'histoire pour généré une image :
-    "${story}" .`)
+    console.log(prompt)
     console.log(`start...`)
-
     try{
         var openaiRes = await openai.createChatCompletion({
             model: textModel,
             messages : [
-                {role: "user", content:`en utilisant le texte suivant , ecrit un prompt de 10 a 15 mot qui liste les point important de l'histoire pour généré une image :
-                "${story}" .`}
+                {
+                    role: "user", 
+                    content: prompt
+                }
             ]
         })
         console.log('end request')
@@ -58,7 +60,7 @@ export const POST = async (req) => {
 
     console.log(`---------VAR------------\n`);
     console.log(`apiKey ${apiKey}`);
-    console.log(`story ${story}`);
+    console.log(`story ${story?story:' a red car'}`);
 
     conexion(apiKey);
     console.log(`Connected !`)
